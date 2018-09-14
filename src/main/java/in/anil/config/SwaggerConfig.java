@@ -45,6 +45,17 @@ public class SwaggerConfig {
                 .apiInfo(metaData());
     }
 
+    @Bean
+    public Docket apiFileInf0(){
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("file-api")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("in.anil.webapp.controller"))
+                .paths(regex("/files.*"))
+                .build()
+                .apiInfo(metaData());
+    }
+
     private ApiInfo metaData() {
         ApiInfo apiInfo = new ApiInfo(
                 "Spring Boot REST API",
